@@ -35,13 +35,14 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{_sharedstatedir}/lib/bdii/gip/provider/glite-info-provider-service-bdii-site
-%{_sharedstatedir}/lib/bdii/gip/provider/glite-info-provider-site
+%{_sharedstatedir}/bdii/gip/provider/glite-info-provider-service-bdii-site
+%{_sharedstatedir}/bdii/gip/provider/glite-info-provider-site
 %config(noreplace) %{_sysconfdir}/bdii/gip/site-urls.conf
 %{_sharedstatedir}/bdii/gip/provider/glite-info-provider-service-bdii-site-glue2
 %{_sharedstatedir}/bdii/gip/provider/glite-info-provider-site-entry
 %{_sharedstatedir}/bdii/gip/provider/glite-info-provider-site-entry-glue2
 %{_sharedstatedir}/bdii/gip/provider/glite-info-provider-site-glue2
+%doc %{_docdir}/%{name}-%{version}/README.md
 %doc %{_docdir}/%{name}-%{version}/AUTHORS.md
 %license /usr/share/licenses/%{name}-%{version}/COPYRIGHT
 %license /usr/share/licenses/%{name}-%{version}/LICENSE.txt
