@@ -57,10 +57,10 @@ rm -rf %{buildroot}
 * Wed Mar 14 2012 Laurence Field <laurence.field@cern.ch> - 1.0.6-1
 - Improved dependency definition
 
-* Tue Aug 22 2011 Laurence Field <laurence.field@cern.ch> - 1.0.5-1
+* Mon Aug 22 2011 Laurence Field <laurence.field@cern.ch> - 1.0.5-1
 - Fixed #84241
 
-* Tue Apr 18 2011 Laurence Field <laurence.field@cern.ch> - 1.0.3-1
+* Mon Apr 18 2011 Laurence Field <laurence.field@cern.ch> - 1.0.3-1
 - Removed the dependency on glite-info-provider-release
 
 * Tue Apr 05 2011 Laurence Field <laurence.field@cern.ch> - 1.0.2-1
