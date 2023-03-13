@@ -36,7 +36,7 @@ jobs:
         almalinux-version: [8, 9]
     name: Build AlmaLinux ${{ matrix.almalinux-version }} RPMs
     runs-on: ubuntu-latest
-    container: quay.io/almalinux/almalinux:stream${{ matrix.almalinux-version }}
+    container: almalinux:${{ matrix.almalinux-version }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -89,7 +89,7 @@ jobs:
     name: Install AlmaLinux 9 RPMs
     needs: build
     runs-on: ubuntu-latest
-    container: almalinux:stream9
+    container: almalinux:9
     steps:
       - uses: actions/download-artifact@v3
         with:
