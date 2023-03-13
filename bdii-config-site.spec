@@ -1,27 +1,21 @@
-Name:		bdii-config-site
-Version:	1.0.7
-Release:	2%{?dist}
-Summary:	Site BDII configration files
-Group:		Development/Libraries
-License:	ASL 2.0
-URL:            https://tomtools.cern.ch/confluence/display/IS/Home 
-# The source for this package was pulled from upstream's vcs.  Use the
-# following commands to generate the tarball:
-#  svn export http://svnweb.cern.ch/guest/gridinfo/bdii-config-site/tags/R_1_0_7_2 %{name}-%{version}
-#  tar --gzip -czvf %{name}-%{version}.tar.gz %{name}-%{version} 
-Source:		%{name}-%{version}.src.tgz
-BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-build
-Requires:	bdii
-%if "%{?dist}" == ".el5"
-Requires: openldap2.4-servers
-%else
-Requires: openldap-servers 
-%endif
-Requires:	glite-info-provider-ldap
-Requires:	glite-info-provider-service
-Requires:	glite-info-static
-Requires:	glite-info-site
+Name:          bdii-config-site
+Version:       1.0.7
+Release:       2%{?dist}
+Summary:       Site BDII configuration files
+Group:         Development/Libraries
+License:       ASL 2.0
+URL:           https://github.com/EGI-Foundation/bdii-config-site
+Source:        %{name}-%{version}.tar.gz
+BuildArch:     noarch
+BuildRoot:     %{_tmppath}/%{name}-%{version}-build
+BuildRequires: rsync
+BuildRequires: make
+Requires:      bdii
+Requires:      openldap-servers
+Requires:      glite-info-provider-ldap
+Requires:      glite-info-provider-service
+Requires:      glite-info-static
+Requires:      glite-info-site
 
 %description
 Configuration files for the Site BDII.
@@ -41,14 +35,17 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-
-/var/lib/bdii/gip/provider/glite-info-provider-service-bdii-site
-/var/lib/bdii/gip/provider/glite-info-provider-site
-%config(noreplace) /etc/bdii/gip/site-urls.conf
-/var/lib/bdii/gip/provider/glite-info-provider-service-bdii-site-glue2
-/var/lib/bdii/gip/provider/glite-info-provider-site-entry
-/var/lib/bdii/gip/provider/glite-info-provider-site-entry-glue2
-/var/lib/bdii/gip/provider/glite-info-provider-site-glue2
+%{_sharedstatedir}/bdii/gip/provider/glite-info-provider-service-bdii-site
+%{_sharedstatedir}/bdii/gip/provider/glite-info-provider-site
+%config(noreplace) %{_sysconfdir}/bdii/gip/site-urls.conf
+%{_sharedstatedir}/bdii/gip/provider/glite-info-provider-service-bdii-site-glue2
+%{_sharedstatedir}/bdii/gip/provider/glite-info-provider-site-entry
+%{_sharedstatedir}/bdii/gip/provider/glite-info-provider-site-entry-glue2
+%{_sharedstatedir}/bdii/gip/provider/glite-info-provider-site-glue2
+%doc %{_docdir}/%{name}-%{version}/README.md
+%doc %{_docdir}/%{name}-%{version}/AUTHORS.md
+%license /usr/share/licenses/%{name}-%{version}/COPYRIGHT
+%license /usr/share/licenses/%{name}-%{version}/LICENSE.txt
 
 %changelog
 * Wed Apr 24 2013 Maria Alandes <maria.alandes.pradillo@cern.ch> - 1.0.7-2
@@ -59,19 +56,27 @@ rm -rf %{buildroot}
 
 * Wed Mar 14 2012 Laurence Field <laurence.field@cern.ch> - 1.0.6-1
 - Improved dependency definition
-* Tue Aug 22 2011 Laurence Field <laurence.field@cern.ch> - 1.0.5-1
+
+* Mon Aug 22 2011 Laurence Field <laurence.field@cern.ch> - 1.0.5-1
 - Fixed #84241
-* Tue Apr 18 2011 Laurence Field <laurence.field@cern.ch> - 1.0.3-1
+
+* Mon Apr 18 2011 Laurence Field <laurence.field@cern.ch> - 1.0.3-1
 - Removed the dependency on glite-info-provider-release
+
 * Tue Apr 05 2011 Laurence Field <laurence.field@cern.ch> - 1.0.2-1
 - Fixed error due to new version of glite-info-provider-service
+
 * Mon Mar 21 2011 Laurence Field <laurence.field@cern.ch> - 1.0.1-1
 - Changed config location to /etc/bdii/gip
+
 * Tue Mar 15 2011 Laurence Field <laurence.field@cern.ch> - 1.0.0-1
 - Fixed Is-148
+
 * Mon Sep 06 2010 Laurence Field <laurence.field@cern.ch> - 0.9.0-1
 - Fixed Is-148
+
 * Thu May 20 2010 Laurence Field <laurence.field@cern.ch> - 0.7.0-1
 - Changed to /opt/glite/etc
+
 * Wed Apr 07 2010 Laurence Field <laurence.field@cern.ch> - 0.4.0-1
 - New package
