@@ -67,9 +67,11 @@ jobs:
           name: rpms7
       - name: Install generated RPMs
         run: |
+          yum install -y http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/updates/umd-release-4.1.3-1.el7.centos.noarch.rpm
           yum localinstall -y bdii-config-site-*.el7.noarch.rpm
 
   # Dependency from PowerTools: openldap-servers
+  # FIXME: will fail until UMD for RHEL 8 is available
   almalinux8-install:
     name: Install AlmaLinux 8 RPMs
     needs: build
@@ -85,6 +87,7 @@ jobs:
           yum localinstall -y bdii-config-site-*.el8.noarch.rpm
 
   # XXX Dependencies from EPEL: openldap-servers
+  # FIXME: will fail until UMD for RHEL 9 is available
   almalinux9-install:
     name: Install AlmaLinux 9 RPMs
     needs: build
