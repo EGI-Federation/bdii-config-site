@@ -7,3 +7,52 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.0.8] - 2023-03-16
+
+### Added
+
+- Update source URL information, package additional documentation. (#3) (Baptiste Grenier)
+
+## [1.0.7] - 2013-04-24
+
+### Fixed
+
+- Fixed rpmlint errors: Changed /opt/glite/libexec to /usr/libexec (#98427) (Maria Alandes)
+
+## [1.0.6] - 2013-04-14
+
+### Changed
+
+- Improved dependency definition (Laurence Field)
+
+## [1.0.5] - 2012-08-22
+
+### Fixed
+
+- Fixed (#84241) (Laurence Field)
+
+## [1.0.3] - 2011-04-18
+
+### Changed
+
+- Removed dependency on glite-info-provider-release (Laurence Field)
+
+
+## [1.0.2] - 2011-04-05
+
+### Fixed
+
+- Fixed error due to new version of glite-info-provider-service (Laurence Field)
+
+## [1.0.1] - 2011-03-21
+
+### Changed
+
+- Changed config location to /etc/bdii/gip (Laurence Field)
+
+## [1.0.0] - 2011-03-15
+
+### Fixed
+
+- Fixed Is-148 (Laurence Field)
