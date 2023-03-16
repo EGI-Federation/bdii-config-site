@@ -10,8 +10,8 @@ BDII documentation is available at
 $ make install
 ```
 
-* Build dependencies: None
-* Runtime dependencies: openldap
+- Build dependencies: None
+- Runtime dependencies: openldap
 
 ## Installing from packages
 
