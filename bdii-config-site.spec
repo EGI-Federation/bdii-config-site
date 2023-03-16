@@ -1,6 +1,6 @@
 Name:          bdii-config-site
-Version:       1.0.7
-Release:       2%{?dist}
+Version:       1.0.8
+Release:       1%{?dist}
 Summary:       Site BDII configuration files
 Group:         Development/Libraries
 License:       ASL 2.0
@@ -48,6 +48,9 @@ rm -rf %{buildroot}
 %license /usr/share/licenses/%{name}-%{version}/LICENSE.txt
 
 %changelog
+* Thu Mar 16 2023 Baptiste Grenier <baptiste.grenier@egi.eu> - 1.0.8-1
+- Update source URL information, package additional documentation. (#3) (Baptiste Grenier)
+
 * Wed Apr 24 2013 Maria Alandes <maria.alandes.pradillo@cern.ch> - 1.0.7-2
 - Added Source URL information
 
