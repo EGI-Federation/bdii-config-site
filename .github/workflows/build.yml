@@ -5,30 +5,6 @@ on:
   pull_request:
 
 jobs:
-  # XXX done outside of the build matrix due to different container name
-  build-centos7:
-    name: Build CentOS 7 RPMs
-    runs-on: ubuntu-latest
-    container: quay.io/centos/centos:7
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-      - name: Install build requisites
-        run: |
-          yum install -y rpm-build yum-utils rpmlint
-          yum-builddep -y bdii-config-site.spec
-      - name: build rpm
-        run: |
-          make clean rpm
-          rpmlint --file .rpmlint.ini build/RPMS/noarch/*.el7.noarch.rpm
-      - name: Upload RPMs
-        uses: actions/upload-artifact@v4
-        with:
-          name: rpms7
-          path: |
-            build/RPMS/noarch/bdii-config-site-*.el7.noarch.rpm
-
   # Use a matrix for AlmaLinux versions
   build:
     strategy:
@@ -55,20 +31,6 @@ jobs:
           name: rpms${{ matrix.almalinux-version }}
           path: |
             build/RPMS/noarch/bdii-config-site-*.el${{ matrix.almalinux-version }}.noarch.rpm
-
-  install-centos7:
-    name: Install CentOS 7 RPMs
-    needs: build-centos7
-    runs-on: ubuntu-latest
-    container: quay.io/centos/centos:7
-    steps:
-      - uses: actions/download-artifact@v5
-        with:
-          name: rpms7
-      - name: Install generated RPMs
-        run: |
-          yum install -y http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/updates/umd-release-4.1.3-1.el7.centos.noarch.rpm
-          yum localinstall -y bdii-config-site-*.el7.noarch.rpm
 
   # FIXME: openldap-servers is in CentOS 8 Stream Powertools, but not in AlmaLinux PowerTools
   # See https://bugs.almalinux.org/view.php?id=222
